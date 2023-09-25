@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diseñador Freelancer</title>
+  <link rel="preload" href="https://drive.google.com/drive/folders/1dZOqmbGfubOJPXk3sb50kkGLgpJM0_rA" as="style">
+  <link rel="stylesheet" href="https://drive.google.com/drive/folders/1dZOqmbGfubOJPXk3sb50kkGLgpJM0_rA">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blanco: #ffffff;
+      --oscuro: #212121;
+      --primario: #FFC107;
+      --secundario: #0097A7;
+      --gris: #757575;
+      --grisClaro: #DFE9F3;
+      --euro: #02707c;
+      --gasoil: #056b02;
+    }
+    /*  Globales **/
+    html {
+      font-size: 62.5%;
+      box-sizing: border-box; /* Hack para Box Model **/
+      scroll-snap-type: y mandatory;
+    }
+    /** Scroll Snap**/
+            .servicios,
+            .navegacion-principal,
+            .formulario {
+                scroll-snap-align: center;
+                scroll-snap-stop: always;
+            }
+
+            *, *:before, *:after {
+                box-sizing: inherit;
+            }
+            body {
+                font-size: 16px; /* 1rem = 10px */
+                font-family: 'Raleway', Arial, Helvetica, sans-serif;
+                background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100% );
+            }
+            .contenedor {
+                max-width: 120rem;
+                margin: 0 auto;
+            }
+            .boton {
+                background-color: var(--oscuro);
+                color: var(--blanco);
+                padding: 1rem 3rem;
+                margin-top: 3rem;
+                font-size: 2rem;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: bold;
+                border-radius: .5rem;
+                width: 90%;
+                text-align: center;
+                border: none;
+            }
+            @media (min-width: 768px) {
+                .boton {
+                    width: auto;
+                }
+            }
+            .euro {
+                background-color: var(--euro);
+            }
+            .gasoil {
+                background-color: var(--gasoil);
+            }
+
+            .boton:hover {
+                cursor: pointer;
+            }
+
+            .sombra {
+                box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+                background-color: var(--blanco);
+                padding: 2rem;
+                border-radius: 1rem;
+            }
+
+    /* Tipografia */
+    h1 {
+      font-size: 3.8rem;
+    }
+    h2 {
+      font-size: 2.8rem;
+    }
+    h3 {
+      font-size: 1.8rem;
+    }
+    h1,h2,h3 {
+      text-align: center;
+    }
+
+    /* Titulos */
+      .titulo span {
+        font-size: 2rem;
+      }
+
+    /** Utilidades **/
+    .w-sm-100 {
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      .w-sm-100 {
+        width: 100%;
+      }
+    }
+    .flex {
+      display: flex;
+    }
+    .alinear-derecha {
+      justify-content: flex-end;
+      column-gap: 2rem;
+    }
+
+    /** Contacto **/
+    .formulario {
+      background-color: var(--gris);
+      width: min( 60rem, 100% ); /** Utilizar el valor más pequeño **/
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+    .formulario fieldset {
+      border: none;
+    }
+    .formulario legend {
+      text-align: center;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--primario);
+    }
+    @media (min-width: 768px) {
+      .contenedor-campos {
+      display: grid;
+      /* grid-template-columns: 50% 50%; */
+      grid-template-rows: auto auto auto 6rem ;
+      column-gap: 2rem;
+      }
+      .campo:nth-child(3),
+      .campo:nth-child(6) {
+      grid-column: 1 / 3;
+      }
+    }
+    .campo {
+      margin-bottom: 1rem;
+    }
+    .campo label {
+      color: var(--blanco);
+      font-weight: bold;
+      margin-bottom: .5rem;
+      display: block;
+    }
+    .campo textarea {
+      height: 5rem;
+    }
+    .input-text {
+      width: 100%;
+      border: none;
+      padding: 1.1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+
+    /** Footer **/
+    .footer {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="formulario">
+    <fieldset>
+
+      <div class="contenedor-campos">
+        <div class="campo">
+          <label>Fecha</label>
+          <input class="input-text" type="date" id="fecha" placeholder="Fecha" required onkeypress="moverAlSiguienteCampo(event, 'usuario')">
+        </div>
+
+        <div class="campo">
+          <label>Usuario</label>
+          <input class="input-text" type="password" id="usuario" placeholder="Usuario" required onkeypress="moverAlSiguienteCampo(event, 'numeroCamion')">
+        </div>
+
+        <div class="campo">
+          <label>Unidad</label>
+          <input class="input-text" type="text" id="numeroCamion" placeholder="Unidad" onkeypress="moverAlSiguienteCampo(event, 'cantidad')">
+        </div>                
+
+        <div class="campo">
+          <label>Litros</label>  
+          <input class="input-text" type="text" id="cantidad" placeholder="Litros" onkeypress="moverAlSiguienteCampo(event, 'odometro')">
+        </div>
+
+        <div class="campo">
+          <label>Odómetro</label>
+          <input class="input-text" type="text" id="odometro" placeholder="Odómetro" onkeypress="moverAlSiguienteCampo(event, 'memo')"> 
+        </div>
+        
+        <div class="campo">
+          <label>Observaciones</label>
+          <input class="input-text" type="text" id="memo" placeholder="Inspección visual" onkeypress="moverAlSiguienteCampo(event,'enviar')">
+        </div>
+      </div> <!-- .contenedor-campos -->
+
+      <div class="alinear-derecha flex">
+        <input class="boton euro w-sm-100" type="submit" id="enviar" value="EURO" onclick="enviarFormulario(event); limpiarFormulario();">
+        <input class="boton w-sm-100" type="submit" value="Cerrar" onclick="google.script.host.close()">
+        <input class="boton gasoil w-sm-100" type="submit" id="enviar" value="GasOil" onclick="enviarGasOil(event); limpiarFormulario();">
+      </div>            
+    </fieldset>
+  </form>
+
+  <script>
+
+    function moverAlSiguienteCampo(event, siguienteCampoId) {
+      if (event.keyCode === 13) { // 13 es el código de tecla "Enter"
+        document.getElementById(siguienteCampoId).focus();
+        event.preventDefault(); // Evita el comportamiento predeterminado del "Enter"
+      }
+    }
+
+    function enviarEURO(event) {
+      event.preventDefault();
+      var fecha = document.getElementById("fecha").value;
+      var usuario = document.getElementById("usuario").value;
+      var numeroCamion = document.getElementById("numeroCamion").value;        
+      var cantidad = document.getElementById("cantidad").value;
+      var odometro = document.getElementById("odometro").value;
+      var memo = document.getElementById("memo").value;
+      google.script.run.guardarDatosEURO(numeroCamion, fecha, cantidad, odometro, memo, usuario);
+    }   
+
+    function enviarGasOil(event) {
+      event.preventDefault();
+      var fecha = document.getElementById("fecha").value;
+      var usuario = document.getElementById("usuario").value;
+      var numeroCamion = document.getElementById("numeroCamion").value;        
+      var cantidad = document.getElementById("cantidad").value;
+      var odometro = document.getElementById("odometro").value;
+      var memo = document.getElementById("memo").value;
+      google.script.run.guardarDatosGASOIL(numeroCamion, fecha, cantidad, odometro, memo, usuario);
+    }
+
+    function limpiarFormulario() {
+      document.getElementById("numeroCamion").value = "";
+      document.getElementById("cantidad").value = "";
+      document.getElementById("odometro").value = "";
+      document.getElementById("memo").value = "";
+      document.getElementById("numeroCamion").focus();
+    }
+
+  </script>
+    
+</body>
+<footer class="footer">
+  <p>Todos los derechos reservados. U-Tech LUSA Córdoba</p>
+</footer>
+</html>
