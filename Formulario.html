@@ -254,7 +254,7 @@
   var datosCSV = fecha + "," + usuario + "," + numeroCamion + "," + odometro + "," + precinto + "," + cantidad + "," + memo + "," + tipo;
 
   // Realizar una solicitud HTTP POST para guardar los datos en el archivo CSV
-  var urlGuardarCSV = 'http://127.0.0.1:5500/'; // Reemplaza con la URL real
+  var urlGuardarCSV = 'https://tanobaglioni.github.io/LUSA/'; // Reemplaza con la URL real
   var xhr = new XMLHttpRequest();
   xhr.open('POST', urlGuardarCSV, true);
   xhr.setRequestHeader('Content-Type', 'text/csv');
